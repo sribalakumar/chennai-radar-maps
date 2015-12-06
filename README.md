@@ -8,9 +8,10 @@ P.S:
   1) Not sure if the image from the website is distributable. I see a valid problem solving by pushing it to any social network.
   2) http://www.imd.gov.in/ seems to be path traversable site and that looks to a known vulnerability.
 
-
->> pip install -r requirements.txt
->> python chennai_radar_maps.py
+```
+> pip install -r requirements.txt
+> python chennai_radar_maps.py
+```
 
 http://www.imd.gov.in/section/dwr/img/caz_chn.gif  --Last Modified-> 2015-12-04 22:20
 
