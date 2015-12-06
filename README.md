@@ -2,12 +2,14 @@ Liked the posts by https://www.facebook.com/tamilnaduweatherman/ and each time I
 
 On checking the pics which are posted by Tamilnaduweatherman I observed them to be from Indian Meteorological Department but there were no noticable/searchable links to the radar data on the site, so I wrote a quick hack that generates the recent url and downloads the radar images.
 
+This script right now feeds this FB page https://www.facebook.com/Chennairadarmaps-1645977852357208/ every 15 minutes.
+
 P.S:
-  1) Not sure if the image from the website is distributable. I see a valid problem solving by pushing it to any social network or a whatsapp group so holding this part to check the licenses.
+  1) Not sure if the image from the website is distributable. I see a valid problem solving by pushing it to any social network.
   2) http://www.imd.gov.in/ seems to be path traversable site and that looks to a known vulnerability.
 
 
-
+>> pip install -r requirements.txt
 >> python chennai_radar_maps.py
 
 http://www.imd.gov.in/section/dwr/img/caz_chn.gif  --Last Modified-> 2015-12-04 22:20
