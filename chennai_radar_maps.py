@@ -40,6 +40,7 @@ def save_file(url, sub_dir, file_name):
 def post_to_fb(f_name, sub_dir, last_modified):
   # Remove token before pushing.
   #should move the token and graph object to a global set or constant.
+  #make the token to read from yml file and add it to git ignore.
   page_access_token = "your_page_access_token_here"
   graph = facebook.GraphAPI(page_access_token)
   required_sub_dir = ["ppi_chn", "caz_chn", "ppz_chn", "sri_chn"]
@@ -52,7 +53,7 @@ def post_to_fb(f_name, sub_dir, last_modified):
 
 base_url = "http://www.imd.gov.in/section/dwr/img/"
 
-soup = BeautifulSoup(urllib2.urlopen(base_url).read())
+soup = BeautifulSoup(urllib2.urlopen(base_url).read(), "html.parser")
 
 for row in soup('table')[0]('tr')[3:-2]:
   tds = row('td')
