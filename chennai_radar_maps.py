@@ -3,6 +3,7 @@
 # Ideally save_file and push_to_fb should be synchonous and performed by seperate job via a queue.
 # TODO: Save images in a proper folder structure like Month/Date/file_name.
 # TODO: proper logging instead of print.
+# Script is machine time dependent, should make it independent of system time.
 
 import datetime
 import urllib2
@@ -12,12 +13,15 @@ import os.path
 from dateutil import parser
 from bs4 import BeautifulSoup
 
+#os.environ['TZ'] = "Asia/kolkatta"
+#time.tzset()
+
 def is_existing_file(file_name, sub_dir):
   directory = directory_path(sub_dir)
   return os.path.isfile(directory + "/" + file_name)
 
 def directory_path(sub_dir):
-  return os.path.dirname(os.path.abspath(__file__)) + "downloads/" + sub_dir
+  return os.path.dirname(os.path.abspath(__file__)) + "/downloads/" + sub_dir
 
 def file_name(lm_date_time, name):
   temp = lm_date_time.timetuple()
@@ -38,7 +42,7 @@ def post_to_fb(f_name, sub_dir, last_modified):
   #should move the token and graph object to a global set or constant.
   page_access_token = "your_page_access_token_here"
   graph = facebook.GraphAPI(page_access_token)
-  required_sub_dir = ["caz_chn", "ppz_chn", "sri_chn"]
+  required_sub_dir = ["ppi_chn", "caz_chn", "ppz_chn", "sri_chn"]
   if sub_dir in required_sub_dir:
     path = (directory_path(sub_dir) + "/" + f_name).encode('utf-8')
     with open(path) as image:
@@ -62,7 +66,10 @@ for row in soup('table')[0]('tr')[3:-2]:
       sub_dir = name.split(".")[0]
       f_name = file_name(lm_date_time, name)
       if not is_existing_file(f_name, sub_dir):
-        save_file(url, sub_dir, f_name)
-        post_to_fb(f_name, sub_dir, last_modified)
+        try:
+          save_file(url, sub_dir, f_name)
+          post_to_fb(f_name, sub_dir, last_modified)
+        except:
+          print "exception with" + f_name + "\n"
 
 
