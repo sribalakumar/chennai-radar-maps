@@ -8,17 +8,3 @@ This script right now feeds Chennairadarmaps FB page https://www.facebook.com/Ch
 > pip install -r requirements.txt
 > python chennai_radar_maps.py
 ```
-
-http://www.imd.gov.in/section/dwr/img/caz_chn.gif  --Last Modified-> 2015-12-04 22:20
-
-http://www.imd.gov.in/section/dwr/img/pac_chn.gif  --Last Modified-> 2015-12-04 22:20
-
-http://www.imd.gov.in/section/dwr/img/ppi_chn.gif  --Last Modified-> 2015-12-04 22:20
-
-http://www.imd.gov.in/section/dwr/img/ppv_chn.gif  --Last Modified-> 2015-12-04 22:20
-
-http://www.imd.gov.in/section/dwr/img/ppz_chn.gif  --Last Modified-> 2015-12-04 22:20
-
-http://www.imd.gov.in/section/dwr/img/sri_chn.gif  --Last Modified-> 2015-12-04 22:20
-
-http://www.imd.gov.in/section/dwr/img/vp2_chn.gif  --Last Modified-> 2015-12-04 22:20
