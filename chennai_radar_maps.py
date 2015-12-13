@@ -43,7 +43,7 @@ def post_to_fb(f_name, sub_dir, last_modified):
   #make the token to read from yml file and add it to git ignore.
   page_access_token = "your_page_access_token_here"
   graph = facebook.GraphAPI(page_access_token)
-  required_sub_dir = ["ppi_chn", "caz_chn", "ppz_chn", "sri_chn"]
+  required_sub_dir = ["ppi_chn", "caz_chn", "ppz_chn", "sri_chn", "ppz_kkl", "caz_kkl", "sri_kkl"]
   if sub_dir in required_sub_dir:
     path = (directory_path(sub_dir) + "/" + f_name).encode('utf-8')
     with open(path) as image:
@@ -52,6 +52,7 @@ def post_to_fb(f_name, sub_dir, last_modified):
       print image_id
 
 base_url = "http://www.imd.gov.in/section/dwr/img/"
+regions = ["_chn", "_kkl"]
 
 soup = BeautifulSoup(urllib2.urlopen(base_url).read(), "html.parser")
 
@@ -61,7 +62,7 @@ for row in soup('table')[0]('tr')[3:-2]:
     name = tds[1]('a')[0].text
     last_modified = tds[2].text
     lm_date_time = parser.parse(last_modified)
-    if "_chn" in name and (lm_date_time.date() == datetime.datetime.today().date()):
+    if any(region in name for region in regions) and (lm_date_time.date() == datetime.datetime.today().date()):
       #print base_url + name + "  --Last Modified-> " + last_modified + "\n"
       url = base_url+name
       sub_dir = name.split(".")[0]
