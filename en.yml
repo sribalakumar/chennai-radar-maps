@@ -1,0 +1,8 @@
+help_text:
+  ppi_chn: "Dark Blue patches represent overcast region, redish to white patches represents very heavy rain clouds."
+  caz_chn: "Scribles on top and right represent the nature of impact at the latitue (horizontal) and longitute (vertical) intersection point. Red, white spikes are the bashing downpours, blue represent moderate ones. Short blue spikes are the calmer ones."
+  ppz_chn: "A bigger region map. Dark Blue patches represent overcast region, redish to white patches represents very heavy rain clouds."
+  sri_chn: "Represent Surface Rainfall Intensity. Light blue, White, yellow and more tinge of red represents the increasing order of rainfall."
+  ppz_kkl: "A bigger region from the karaikal radar. Dark Blue patches represent overcast region, redish to white patches represents very heavy rain clouds."
+  caz_kkl: "Scribles on top and right represent the nature of impact at the latitue (horizontal) and longitute (vertical) intersection point. Red, white spikes are the bashing downpours, blue represent moderate ones. Short blue spikes are the calmer ones."
+  sri_kkl: "Represent Surface Rainfall Intensity. Light blue, White, yellow and more tinge of red represents the increasing order of rainfall."

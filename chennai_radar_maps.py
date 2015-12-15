@@ -17,6 +17,8 @@ from bs4 import BeautifulSoup
 #os.environ['TZ'] = "Asia/kolkatta"
 #time.tzset()
 creds = yaml.load(open(os.path.dirname(os.path.abspath(__file__)) + "/creds.yml"))
+en = yaml.load(open(os.path.dirname(os.path.abspath(__file__)) + "/en.yml"))
+
 fb_token = creds['fb_group']['token']
 
 def is_existing_file(file_name, sub_dir):
@@ -40,13 +42,16 @@ def save_file(url, sub_dir, file_name):
   output.write(file.read())
   output.close()
 
+def help_text(region):
+  return en["help_text"][region]
+
 def post_to_fb(f_name, sub_dir, last_modified):
   graph = facebook.GraphAPI(fb_token)
   required_sub_dir = ["ppi_chn", "caz_chn", "ppz_chn", "sri_chn", "ppz_kkl", "caz_kkl", "sri_kkl"]
   if sub_dir in required_sub_dir:
     path = (directory_path(sub_dir) + "/" + f_name).encode('utf-8')
     with open(path) as image:
-      caption = "Radar update @ " + last_modified
+      caption = help_text(sub_dir) + " Radar update @ " + last_modified
       image_id = graph.put_photo(image, caption, '')
       print image_id
 
