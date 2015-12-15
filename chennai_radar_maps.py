@@ -10,11 +10,14 @@ import urllib2
 import facebook
 import time
 import os.path
+import yaml
 from dateutil import parser
 from bs4 import BeautifulSoup
 
 #os.environ['TZ'] = "Asia/kolkatta"
 #time.tzset()
+creds = yaml.load(open(os.path.dirname(os.path.abspath(__file__)) + "/creds.yml"))
+fb_token = creds['fb_group']['token']
 
 def is_existing_file(file_name, sub_dir):
   directory = directory_path(sub_dir)
@@ -38,11 +41,7 @@ def save_file(url, sub_dir, file_name):
   output.close()
 
 def post_to_fb(f_name, sub_dir, last_modified):
-  # Remove token before pushing.
-  #should move the token and graph object to a global set or constant.
-  #make the token to read from yml file and add it to git ignore.
-  page_access_token = "your_page_access_token_here"
-  graph = facebook.GraphAPI(page_access_token)
+  graph = facebook.GraphAPI(fb_token)
   required_sub_dir = ["ppi_chn", "caz_chn", "ppz_chn", "sri_chn", "ppz_kkl", "caz_kkl", "sri_kkl"]
   if sub_dir in required_sub_dir:
     path = (directory_path(sub_dir) + "/" + f_name).encode('utf-8')

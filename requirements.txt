@@ -1,3 +1,4 @@
 facebook-sdk
 python-dateutil
 beautifulsoup4
+pyyaml
