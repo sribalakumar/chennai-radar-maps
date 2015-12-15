@@ -67,7 +67,7 @@ for row in soup('table')[0]('tr')[3:-2]:
     last_modified = tds[2].text
     lm_date_time = parser.parse(last_modified)
     if any(region in name for region in regions) and (lm_date_time.date() == datetime.datetime.today().date()):
-      #print base_url + name + "  --Last Modified-> " + last_modified + "\n"
+      print base_url + name + "  --Last Modified-> " + last_modified + "\n"
       url = base_url+name
       sub_dir = name.split(".")[0]
       f_name = file_name(lm_date_time, name)
